@@ -1,0 +1,52 @@
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+public class Runner {
+    public static void main(String[] args) {
+        // Create a Calc object with an array
+        Calc myCalculator = new Calc();
+
+        // Get user input for one pair of numbers
+        Scanner scan = new Scanner(System.in);
+        boolean validInput = false;
+
+        double n1 = 0, n2 = 0; // Declare the variables outside the loop
+
+        // Loop to get valid input from the user
+        while (!validInput) {
+            try {
+                System.out.println("Please enter the first number for Calculation:");
+                n1 = scan.nextDouble(); // Assign value to n1
+                System.out.println("Please enter the second number for Calculation:");
+                n2 = scan.nextDouble(); // Assign value to n2
+
+                // If input is valid, exit the loop
+                validInput = true;
+            } catch (InputMismatchException e) {
+                // Handle invalid input
+                System.out.println("Invalid!!! Please try again.");
+                scan.nextLine(); // Clear the buffer to prevent infinite loop
+            }
+        }
+
+        // Pass the numbers to the Calc object
+        myCalculator.setNum1(0, n1);
+        myCalculator.setNum2(0, n2);
+
+        // Display stored numbers using toString
+        System.out.println("\nStored numbers in Calc object:");
+        System.out.println(myCalculator);
+
+        // Examine the instance private data fields by calling get methods
+        System.out.println("\nCalling num1 and num2 get methods for calculation:");
+        System.out.println("num1: " + myCalculator.getNum1(0));
+        System.out.println("num2: " + myCalculator.getNum2(0));
+
+        // Call Calc methods directly and output the results for each pair of numbers
+        System.out.println("\nResults for the calculation:");
+        System.out.println("The sum is: " + myCalculator.add(0));
+        System.out.println("The difference is: " + myCalculator.subtract(0));
+        System.out.println("The product is: " + myCalculator.multiply(0));
+        System.out.println("The quotient is: " + myCalculator.divide(0));
+    }
+}
