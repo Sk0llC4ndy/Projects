@@ -9,6 +9,9 @@ public class Exam extends Assessment {
    * Params number of not missed questions
    */
    public Exam(int questions, int missed) {
+            if (questions <= 0) {
+        throw new IllegalArgumentException("Number of questions must be greater than 0.");
+   }
    this.NumQuestions = questions;
    this.NumMissed = missed;
    this.pointsEach = 100.0 / questions; //Points of each question depends on size
